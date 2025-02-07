@@ -1,6 +1,6 @@
-import path from "path"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react()],
@@ -9,14 +9,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: {
+  server: process.env.NODE_ENV === "development" ? {
     proxy: {
-      // When you make a request to /api, Vite will proxy it to the target API
-      '/api': {
-        target: 'https://api.jsonserve.com',
+      "/api": {
+        target: "https://api.jsonserve.com",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
-  },
-})
+  } : undefined, 
+});

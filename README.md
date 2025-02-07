@@ -57,12 +57,6 @@ pnpm dev
 npm run dev
 ```
 
-# Quiz Gamification Project image
-
-![Quiz App UI](./src/assets/Screenshot%202025-02-07%20140350.png)
-![Quiz App UI](./src/assets/Screenshot%202025-02-07%20140404.png)
-![Quiz App UI](./src/assets/Screenshot%202025-02-07%20140417.png)
-
 
 ## **Contact**
 
