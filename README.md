@@ -33,17 +33,37 @@ First, clone the repository to your local machine:
 
 ```bash
 git clone https://github.com/your-username/quiz-gamification-project.git
+```
+
+### **2. Navigate to the Project Folder**
+
+```bash
+cd quiz-gamification-project
+```
+### **3. Install Dependencies**
+
+```bash
+pnpm install
+# or
+npm install
+
+```
+
+### **4. Start the Development Server**
+
+```bash
+pnpm dev
+# or
+npm run dev
+```
 
 
 
-/src
-  /components       # Contains reusable components (StartScreen, Quiz, Question, Result, etc.)
-  /assets           # Stores images and static assets
-  /styles           # Tailwind CSS configuration and custom styles
-  App.tsx           # Main App component managing the quiz flow
-  index.tsx         # Entry point for the React app
-/public
-  index.html        # HTML file, entry point for the web page
-  manifest.json     # Web app manifest for progressive web app features
-/package.json       # Project configuration and dependencies
-/tailwind.config.js # Tailwind CSS configuration
+## **Contact**
+
+For any inquiries or suggestions, you can reach me at:
+Email: your-email@example.com
+GitHub: your-username
+
+
+
