@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# **Quiz Gamification Project**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and engaging quiz game that tests your knowledge with exciting features like streaks and bonus points! The project is built using **React**, **TypeScript**, and **Framer Motion** for smooth animations and interactions.
 
-Currently, two official plugins are available:
+## **Project Overview**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This quiz game allows users to answer multiple-choice questions, accumulate points, and unlock bonus points for streaks of correct answers. The game provides a polished UI with smooth transitions and animations, making the experience interactive and enjoyable.
 
-## Expanding the ESLint configuration
+### **Key Features**
+- **Dynamic Quiz Flow**: The game progresses from a welcome screen to the quiz and results.
+- **Points System**: Players earn points for correct answers.
+- **Streaks & Bonus**: Bonus points for consecutive correct answers.
+- **Animations**: Transitions between questions and answers are enhanced with Framer Motion.
+- **Responsive Design**: Works seamlessly on both mobile and desktop.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## **Technologies Used**
+- **React**: For building the user interface.
+- **TypeScript**: For type safety and better development experience.
+- **Framer Motion**: For adding animations to UI components.
+- **Tailwind CSS**: For styling the application with a utility-first approach.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## **Setup Instructions**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To get started with this project, follow the steps below.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### **1. Clone the Repository**
+
+First, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/your-username/quiz-gamification-project.git
+
+
+
+/src
+  /components       # Contains reusable components (StartScreen, Quiz, Question, Result, etc.)
+  /assets           # Stores images and static assets
+  /styles           # Tailwind CSS configuration and custom styles
+  App.tsx           # Main App component managing the quiz flow
+  index.tsx         # Entry point for the React app
+/public
+  index.html        # HTML file, entry point for the web page
+  manifest.json     # Web app manifest for progressive web app features
+/package.json       # Project configuration and dependencies
+/tailwind.config.js # Tailwind CSS configuration
