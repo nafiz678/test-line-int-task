@@ -1,19 +1,27 @@
-// src/App.tsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import StartScreen from './components/StartScreen';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 
-// Define the structure of a single quiz question.
-export interface Question {
-  question: string;
-  options: string[];
-  correctAnswer: string;
-  points?: number; // Optional points value (default to 10 if not provided)
+// Option type to be used in the quiz
+export interface Option {
+  id: number;
+  description: string; // The option text
+  is_correct: boolean; // Whether the option is the correct answer
 }
 
-// Define the structure of the overall quiz data.
+// Updated Question type to use Option[]
+export interface Question {
+  id: number;
+  question: string;
+  options: Option[];   
+  correctAnswer: string;
+  description: string;
+  points?: number;
+}
+
+// Updated QuizData type using the new Question type
 export interface QuizData {
   questions: Question[];
 }
@@ -76,14 +84,12 @@ const screenVariants = {
 };
 
 function App() {
-  // State declarations with proper types.
   const [quizData, setQuizData] = useState<QuizData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const [stage, setStage] = useState<Stage>('start');
   const [finalScore, setFinalScore] = useState<number>(0);
 
-  // Fetch quiz data from the API endpoint on mount.
   useEffect(() => {
     fetch('/api/Uw5CrX')
       .then((response) => {
@@ -102,26 +108,19 @@ function App() {
       });
   }, []);
 
-  // Handler to start the quiz.
   const handleStart = (): void => {
     setStage('quiz');
   };
 
-  // Handler for when the quiz is completed.
   const handleQuizComplete = (score: number): void => {
     setFinalScore(score);
     setStage('result');
   };
 
-  // Handler to restart the quiz.
   const handleRestart = (): void => {
     window.location.reload();
-    // Or reset state values for a smoother restart:
-    // setStage('start');
-    // setFinalScore(0);
   };
 
-  // Animated loading state.
   if (loading) {
     return (
       <motion.div
@@ -131,7 +130,7 @@ function App() {
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className="text-3xl font-extrabold text-white"
+          className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white"
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, repeatType: 'mirror' }}
         >
@@ -141,7 +140,6 @@ function App() {
     );
   }
 
-  // Animated error state.
   if (error) {
     return (
       <motion.div
@@ -150,7 +148,7 @@ function App() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <motion.div className="text-3xl font-extrabold text-white">
+        <motion.div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white">
           Error: {error.message}
         </motion.div>
       </motion.div>
@@ -166,7 +164,7 @@ function App() {
       exit="exit"
     >
       <motion.div
-        className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl p-10"
+        className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl p-2 sm:p-8 md:p-10 lg:p-12"
         variants={cardVariants}
       >
         <AnimatePresence mode="wait" initial={false}>

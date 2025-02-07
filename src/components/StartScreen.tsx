@@ -1,4 +1,4 @@
-// src/components/StartScreen.tsx
+
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -49,27 +49,27 @@ const buttonVariants = {
 const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
   return (
     <motion.div
-      className="flex flex-col items-center p-8 bg-white bg-opacity-30 backdrop-blur-sm shadow-lg rounded-2xl border border-white border-opacity-20"
+      className="flex flex-col items-center justify-center p-1 sm:p-8 md:p-10 bg-white bg-opacity-30 backdrop-blur-sm shadow-lg rounded-2xl border border-white border-opacity-20"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
     >
       <motion.h1
-        className="text-4xl font-extrabold mb-4 text-gray-800 text-center"
+        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-gray-800 text-center"
         variants={headingVariants}
       >
         Welcome to the Quiz Flow!
       </motion.h1>
       <motion.p
-        className="mb-6 text-lg text-gray-600 text-center max-w-md"
+        className="mb-6 text-base sm:text-lg md:text-xl text-gray-600 text-center max-w-md"
         variants={textVariants}
       >
         Test your knowledge and earn bonus points as you go!
       </motion.p>
       <motion.button
         onClick={onStart}
-        className="px-8 py-3 bg-blue-500 text-white rounded-full font-semibold focus:outline-none"
+        className="px-6 sm:px-8 py-3 bg-blue-500 text-white rounded-full font-semibold focus:outline-none"
         variants={buttonVariants}
         whileHover="hover"
       >
