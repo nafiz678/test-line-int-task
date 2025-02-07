@@ -40,16 +40,16 @@ git clone https://github.com/your-username/quiz-gamification-project.git
 ```bash
 cd quiz-gamification-project
 ```
-### **3. Install Dependencies**
+### **3. Install Dependencies (recommended pnpm)**
 
 ```bash
-pnpm install
+pnpm install 
 # or
 npm install
 
 ```
 
-### **4. Start the Development Server**
+### **4. Start the Development Server (recommended pnpm)**
 
 ```bash
 pnpm dev
@@ -57,6 +57,11 @@ pnpm dev
 npm run dev
 ```
 
+# Quiz Gamification Project
+
+![Quiz App UI](./src/assets/Screenshot%202025-02-07%20140350.png)
+![Quiz App UI](./src/assets/Screenshot%202025-02-07%20140404.png)
+![Quiz App UI](./src/assets/Screenshot%202025-02-07%20140417.png)
 
 
 ## **Contact**
