@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import StartScreen from './components/StartScreen';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
+import axios from 'axios';
 
 // Option type to be used in the quiz
 export interface Option {
@@ -15,7 +16,7 @@ export interface Option {
 export interface Question {
   id: number;
   question: string;
-  options: Option[];   
+  options: Option[];
   correctAnswer: string;
   description: string;
   points?: number;
@@ -83,6 +84,7 @@ const screenVariants = {
   },
 };
 
+
 function App() {
   const [quizData, setQuizData] = useState<QuizData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -90,22 +92,35 @@ function App() {
   const [stage, setStage] = useState<Stage>('start');
   const [finalScore, setFinalScore] = useState<number>(0);
 
+
+
+  const fetchQuizData = async () => {
+    try {
+      const response = await axios.get(
+        `https://shaggy-boy.surge.sh/Uw5CrX`
+      );      
+      return response.data;
+    } catch (error) {
+      console.error("Fetching error:", error);
+      throw error;
+    }
+  };
+  
+
   useEffect(() => {
-    fetch('/api/Uw5CrX')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch quiz data');
-        }
-        return response.json();
-      })
-      .then((data: QuizData) => {
+    const getQuizData = async () => {
+      setLoading(true);
+      try {
+        const data = await fetchQuizData();
         setQuizData(data);
+      } catch (error) {
+        setError(error as Error);
+      } finally {
         setLoading(false);
-      })
-      .catch((err: unknown) => {
-        setError(err as Error);
-        setLoading(false);
-      });
+      }
+    };
+  
+    getQuizData();
   }, []);
 
   const handleStart = (): void => {
