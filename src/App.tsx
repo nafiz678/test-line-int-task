@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import StartScreen from './components/StartScreen';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
-import axios from 'axios';
 
 // Option type to be used in the quiz
 export interface Option {
@@ -94,33 +93,22 @@ function App() {
 
 
 
-  const fetchQuizData = async () => {
-    try {
-      const response = await axios.get(
-        `https://shaggy-boy.surge.sh/Uw5CrX`
-      );      
-      return response.data;
-    } catch (error) {
-      console.error("Fetching error:", error);
-      throw error;
-    }
-  };
-  
-
   useEffect(() => {
-    const getQuizData = async () => {
-      setLoading(true);
-      try {
-        const data = await fetchQuizData();
+    fetch('/api/Uw5CrX')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch quiz data');
+        }
+        return response.json();
+      })
+      .then((data: QuizData) => {
         setQuizData(data);
-      } catch (error) {
-        setError(error as Error);
-      } finally {
         setLoading(false);
-      }
-    };
-  
-    getQuizData();
+      })
+      .catch((err: unknown) => {
+        setError(err as Error);
+        setLoading(false);
+      });
   }, []);
 
   const handleStart = (): void => {
